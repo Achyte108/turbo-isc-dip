@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Turbo.net</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      background-color: #1f1a17;
+      color: #fff;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+ 
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background: #1f1a17;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+.logo-pfp {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ffbfa3;
+}
+
+
+    nav {
+      display: flex;
+      gap: 20px;
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    nav a {
+      position: relative;
+      padding: 10px 18px;
+      border-radius: 7px;
+      border: 1px solid #ffbfa3;
+      font-size: 12px;
+      text-transform: uppercase;
+      font-weight: 600;
+      letter-spacing: 2px;
+      background: transparent;
+      color: #ffbfa3;
+      overflow: hidden;
+      transition: all 0.2s ease-in;
+    }
+
+    nav a:hover {
+      background: #ffbfa3;
+      color: #1f1a17;
+      box-shadow: 0 0 30px 5px rgba(255,191,163,0.7);
+    }
+
+
+    .hero {
+      display: grid;
+      grid-template-columns: 380px 1fr;
+      height: calc(100vh - 81px);
+    }
+
+    .hero-left {
+      background: linear-gradient(180deg, #ffd6c9, #ffbfa3);
+      color: #000;
+      padding: 40px 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .hero-left h1 {
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+
+    .learn-more {
+      padding: 12px 22px;
+      border: none;
+      border-radius: 25px;
+      background: #000;
+      color: #ffbfa3;
+      font-weight: bold;
+      cursor: pointer;
+      width: fit-content;
+    }
+
+
+    .countdown-box {
+      background: rgba(31, 26, 23, 0.9);
+      border: 1px solid #ffbfa3;
+      border-radius: 18px;
+      padding: 18px;
+      margin-bottom: 20px;
+    }
+
+    .countdown-label {
+      color: #1f1a17;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 14px;
+      font-weight: bold;
+    }
+
+    .countdown-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      text-align: center;
+    }
+
+    .time-unit {
+      background: #26201c;
+      border: 1px solid rgba(255, 191, 163, 0.6);
+      border-radius: 14px;
+      padding: 12px 6px;
+    }
+
+    .time-value {
+      font-size: 22px;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .time-label {
+      font-size: 10px;
+      margin-top: 4px;
+      color: #ffbfa3;
+      text-transform: uppercase;
+    }
+
+    .hero-right {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-right img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    
+    .explore {
+      padding: 60px 40px;
+    }
+
+    .explore h2 {
+      font-size: 28px;
+      margin-bottom: 40px;
+    }
+
+    
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px;
+    }
+
+    .card {
+      background: #26201c;
+      padding: 40px;
+      border-radius: 20px;
+      min-height: 260px;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .card h3 {
+      font-size: 22px;
+      margin-bottom: 15px;
+    }
+
+    .card p {
+      font-size: 16px;
+      color: #aaa;
+      margin-bottom: 25px;
+    }
+
+    .card button {
+      padding: 12px 22px;
+      background: #fff;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: bold;
+      width: fit-content;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+      .cards {
+        grid-template-columns: 1fr;
+      }
+    }
+
+  
+#crew {
+  padding: 60px 40px;
+}
+
+#crew h2 {
+  font-size: 28px;
+  margin-bottom: 40px;
+}
+
+.crew-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 30px;
+}
+
+.crew-member {
+  background: #26201c;
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
+}
+
+.crew-member img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+
+.crew-member h3 {
+  font-size: 18px;
+  margin-bottom: 6px;
+}
+
+.crew-member p {
+  font-size: 14px;
+  color: #ffbfa3;
+}
+
+  </style>
+</head>
+<body>
+<div id="main-page">
+<header>
+  <div class="logo">
+  <div class="logo">
+  <img src="23035e17-837d-4c2b-ab2e-be080db68586.jfif" class="logo-pfp" alt="Team Logo">
+  <strong></strong>
+</div>
+
+    <strong>Turbo ISC-DIP</strong>
+  </div>
+  <nav>
+  <a href="#" onclick="showCrew()">Meet Our Crew</a>
+  
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-left">
+    <div>
+      <h1>Embodying the spirit of innovation</h1>
+      <button class="learn-more">Learn more</button>
+    </div>
+
+    <div>
+      <div class="countdown-box">
+        <div class="countdown-label">Countdown to EVGP</div>
+        <div class="countdown-grid" id="evgp"></div>
+      </div>
+
+      <div class="countdown-box">
+        <div class="countdown-label">Countdown to Steam</div>
+        <div class="countdown-grid" id="steam"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <img src="e67cbb56-551c-431f-b64e-f47cedecb5c8.png" alt="Team" />
+  </div>
+</section>
+
+<section class="explore">
+  <h2>Explore</h2>
+  <div class="cards">
+    <div class="card">
+      <h3>Article</h3>
+      <p>I am an article</p>
+      <button>Read More</button>
+    </div>
+
+    <div class="card">
+      <h3>Quiz</h3>
+      <p>Think you know all about racing flags?</p>
+      <button>Play Quiz</button>
+    </div>
+
+    <div class="card">
+      <h3>Mini Game</h3>
+      <p>Reaction time challenge.</p>
+      <button>Play Game</button>
+    </div>
+  </div>
+</section>
+</div>
+
+<div id="crew-page" style="display:none;">
+
+  <header style="padding:20px 40px;">
+    <a href="#" onclick="goBack()" style="color:#ffbfa3; letter-spacing:2px; font-size:12px;">
+      ← Back
+    </a>
+  </header>
+
+  <section style="padding:60px 40px;">
+    <h2 style="font-size:28px; margin-bottom:40px;">Meet Our Crew</h2>
+
+    <div style="
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+      gap:30px;
+    ">
+      <div style="background:#26201c;padding:20px;border-radius:16px;text-align:center;">
+        <img src="96d9b868-7bc3-4e71-a555-58e0d2f00055-removebg-preview.png" style="width:100%;height:500px;object-fit:cover;border-radius:20px;">
+        <h3>Perla Jallikian</h3>
+        <p style="color:#ffbfa3;">Chief Managment Officer</p>
+      </div>
+
+      <div style="background:#26201c;padding:20px;border-radius:16px;text-align:center;">
+        <img src="56e22ed6-8de7-4831-90ba-9ec0c08bbb7b-removebg-preview.png" style="width:100%;height:500px;object-fit:cover;border-radius:20px;">
+        <h3>Abdullah Hashim</h3>
+        <p style="color:#ffbfa3;">Chief Operations Officer</p>
+      </div>
+      <div style="background:#26201c;padding:20px;border-radius:16px;text-align:center;">
+        <img src="501f7cb2-e80d-45d9-9807-e439beb8cf5a.jfif" style="width:100%;height:500px;object-fit:cover;border-radius:20px;">
+        <h3>Arsham Mehdi</h3>
+        <p style="color:#ffbfa3;">Head of Programming</p>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+
+<script>
+
+    function showCrew() {
+  document.getElementById("main-page").style.display = "none";
+  document.getElementById("crew-page").style.display = "block";
+  window.scrollTo(0, 0);
+}
+
+function goBack() {
+  document.getElementById("crew-page").style.display = "none";
+  document.getElementById("main-page").style.display = "block";
+  window.scrollTo(0, 0);
+}
+
+
+  function startCountdown(elementId, targetDate) {
+    const el = document.getElementById(elementId);
+    setInterval(() => {
+      const now = new Date().getTime();
+      const distance = new Date(targetDate).getTime() - now;
+
+      if (distance < 0) {
+        el.innerHTML = "Event Started";
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((distance / (1000 * 60)) % 60);
+      const seconds = Math.floor((distance / 1000) % 60);
+
+      el.innerHTML = `
+        <div class="time-unit"><div class="time-value">${days}</div><div class="time-label">Days</div></div>
+        <div class="time-unit"><div class="time-value">${hours}</div><div class="time-label">Hours</div></div>
+        <div class="time-unit"><div class="time-value">${minutes}</div><div class="time-label">Minutes</div></div>
+        <div class="time-unit"><div class="time-value">${seconds}</div><div class="time-label">Seconds</div></div>
+      `;
+    }, 1000);
+  }
+
+  startCountdown("evgp", "2026-02-24T00:00:00");
+  startCountdown("steam", "2026-01-05T00:00:00");
+</script>
+
+
+</body>
+</html>
